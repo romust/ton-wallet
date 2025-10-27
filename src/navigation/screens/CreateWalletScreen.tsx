@@ -1,9 +1,9 @@
 import { Text, View, StyleSheet } from "react-native";
 
-export default function HomeScreen() {
+export const CreateWalletScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Edit src/navigation/screens/Home.tsx to edit this screen.</Text>
+      <Text>Create Wallet Screen</Text>
     </View>
   );
 }
