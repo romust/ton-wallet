@@ -9,13 +9,15 @@
     "newArchEnabled": true,
     "scheme": "tonwallet",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.TonWallet"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.TonWallet"
     },
     "web": {
       "favicon": "src/assets/images/favicon.png"
