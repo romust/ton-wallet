@@ -1,8 +1,11 @@
 import { useStoreContext } from "@/components/contexts";
+import { useNavigation } from "@react-navigation/native";
 import { Text, View, StyleSheet, Button } from "react-native";
 
 export const SeedScreen = () => {
   const { store } = useStoreContext();
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.wordsContainer}>
@@ -17,7 +20,7 @@ export const SeedScreen = () => {
           ))}
         </View>
       </View>
-      <Button title="Continue" onPress={() => { }} />
+      <Button title="Continue" onPress={() => navigation.navigate('Home')} />
     </View>
   );
 }
