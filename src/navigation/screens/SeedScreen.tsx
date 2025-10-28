@@ -1,11 +1,11 @@
 import { useStoreContext } from "@/components/contexts";
 import { useParams } from "@/utils";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { Text, View, StyleSheet, Button } from "react-native";
 
 export const SeedScreen = () => {
   const { store } = useStoreContext();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
   const { fromWelcome } = useParams<{ fromWelcome: boolean }>();
 
   return (

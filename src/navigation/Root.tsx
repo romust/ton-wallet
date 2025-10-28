@@ -6,6 +6,7 @@ import { useColorScheme } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from '@/navigation/screens/HomeScreen';
 import { HistoryScreen } from '@/navigation/screens/HistoryScreen';
+import { ImportWalletScreen } from '@/navigation/screens/ImportWalletScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -31,6 +32,10 @@ export const Root = () => {
               }} />
               <Stack.Screen name="Seed" component={SeedScreen} options={{
                 title: 'Your SEED phrase',
+                headerBackButtonDisplayMode: "minimal",
+              }} />
+              <Stack.Screen name="ImportWallet" component={ImportWalletScreen} options={{
+                title: 'Import Wallet',
                 headerBackButtonDisplayMode: "minimal",
               }} />
               <Stack.Screen name="Wallet" component={WalletTabs} options={{

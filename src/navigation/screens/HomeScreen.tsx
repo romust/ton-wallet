@@ -1,18 +1,19 @@
 import { useStoreContext } from "@/components/contexts";
 import { useBalance } from "@/hooks";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { View, StyleSheet, Text, Button } from "react-native";
 
 export const HomeScreen = () => {
   const { balance } = useBalance();
   const { store } = useStoreContext();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
   
   return (
     <View style={styles.container}>
       <Text style={styles.balance}>Balance: {balance} TON</Text>
       <Text style={styles.address}>{store.wallet?.address.toString()}</Text>
       <Button title="Show Seed" onPress={() => navigation.navigate('Seed')} />
+      <Button title="Disconnect wallet" onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Welcome' }] })} />
     </View>
   );
 }
