@@ -10,7 +10,7 @@ import { HistoryScreen } from '@/navigation/screens/HistoryScreen';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const HomeTabs = () => {
+const WalletTabs = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
       <Tab.Screen name="Home" component={HomeScreen} />
@@ -31,9 +31,9 @@ export const Root = () => {
               }} />
               <Stack.Screen name="Seed" component={SeedScreen} options={{
                 title: 'Your SEED phrase',
-                headerBackButtonDisplayMode: "minimal"
+                headerBackButtonDisplayMode: "minimal",
               }} />
-              <Stack.Screen name="Home" component={HomeTabs} options={{
+              <Stack.Screen name="Wallet" component={WalletTabs} options={{
                 headerShown: false,
               }} />
             </Stack.Group>

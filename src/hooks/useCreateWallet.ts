@@ -16,7 +16,7 @@ export const useCreateWallet = () => {
         });
         console.log('Wallet V5R1 address:', wallet.address.toString());
         setStore({ mnemonic, wallet });
-        navigation.navigate('Seed')
+        navigation.navigate('Seed', { fromWelcome: true })
     }
     return { createWallet };
 }

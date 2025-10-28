@@ -1,10 +1,12 @@
 import { useStoreContext } from "@/components/contexts";
+import { useParams } from "@/utils";
 import { useNavigation } from "@react-navigation/native";
 import { Text, View, StyleSheet, Button } from "react-native";
 
 export const SeedScreen = () => {
   const { store } = useStoreContext();
   const navigation = useNavigation();
+  const { fromWelcome } = useParams<{ fromWelcome: boolean }>();
 
   return (
     <View style={styles.container}>
@@ -20,7 +22,7 @@ export const SeedScreen = () => {
           ))}
         </View>
       </View>
-      <Button title="Continue" onPress={() => navigation.navigate('Home')} />
+      {fromWelcome && <Button title="Continue" onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Wallet' }] })} />}
     </View>
   );
 }
