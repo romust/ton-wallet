@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { Root } from '@/navigation/Root';
-import { useColorScheme } from 'react-native';
+import { StoreProvider } from '@/components/contexts';
 
 export function App() {
-  const scheme = useColorScheme();
 
   return (
-    <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Root />
-    </NavigationContainer>
+    <StoreProvider>
+        <Root />
+    </StoreProvider>
   );
 }

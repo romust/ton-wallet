@@ -1,9 +1,23 @@
-import { Text, View, StyleSheet } from "react-native";
+import { useStoreContext } from "@/components/contexts";
+import { Text, View, StyleSheet, Button } from "react-native";
 
 export const SeedScreen = () => {
+  const { store } = useStoreContext();
   return (
     <View style={styles.container}>
-      <Text>Seed Phrase Screen</Text>
+      <View style={styles.wordsContainer}>
+        <View>
+          {store.mnemonic.slice(0, 12).map((word, index) => (
+            <Text key={index} style={styles.word}>{word}</Text>
+          ))}
+        </View>
+        <View>
+          {store.mnemonic.slice(-12).map((word, index) => (
+            <Text key={index} style={styles.word}>{word}</Text>
+          ))}
+        </View>
+      </View>
+      <Button title="Continue" onPress={() => { }} />
     </View>
   );
 }
@@ -13,5 +27,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  wordsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 24,
+    backgroundColor: "white",
+    padding: 24,
+    borderRadius: 35,
+    marginBottom: 50,
+  },
+  word: {
+    fontSize: 32,
   },
 });
