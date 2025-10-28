@@ -1,9 +1,9 @@
 import { Text, View, StyleSheet } from "react-native";
 
-export const CreateWalletScreen = () => {
+export const SeedScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Create Wallet Screen</Text>
+      <Text>Seed Phrase Screen</Text>
     </View>
   );
 }

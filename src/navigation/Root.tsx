@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { WelcomeScreen } from './screens/WelcomeScreen';
-import { CreateWalletScreen } from '@/navigation/screens/CreateWalletScreen';
+import { SeedScreen } from '@/navigation/screens/SeedScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,8 +14,8 @@ export const Root = () => {
           <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
             headerShown: false,
           }} />
-          <Stack.Screen name="CreateWallet" component={CreateWalletScreen} options={{
-            title: 'Create Wallet',
+          <Stack.Screen name="SeedScreen" component={SeedScreen} options={{
+            title: 'Your SEED phrase',
             headerBackButtonDisplayMode: "minimal"
           }} />
         </Stack.Group>

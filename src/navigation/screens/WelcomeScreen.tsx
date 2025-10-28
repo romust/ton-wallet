@@ -1,12 +1,13 @@
-import { useNavigation } from "@react-navigation/native";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { useCreateWallet } from "@/hooks";
+import { View, StyleSheet, Button } from "react-native";
 
 export const WelcomeScreen = () => {
-  const navigation = useNavigation();
+  const { createWallet } = useCreateWallet();
+
   return (
     <View style={styles.container}>
-      <Button title="Create Wallet" onPress={() => navigation.navigate('CreateWallet')} />
-      <Button title="Import Wallet" onPress={() => {}} />
+      <Button title="Create Wallet" onPress={createWallet} />
+      <Button title="Import Wallet" onPress={() => { }} />
     </View>
   );
 }
