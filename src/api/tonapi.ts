@@ -12,3 +12,15 @@ export const tonapi = new TonApiClient({
     const balanceTon = Number(fromNano(balanceNano));
     return balanceTon;
   }
+
+  export async function getAccountEvents(address: Address, before_lt?: number) {
+    const res = await tonapi.accounts.getAccountEvents(address, {
+      limit: 20,
+      before_lt: before_lt ? BigInt(before_lt) : undefined,
+    });
+  
+    return {
+      items: res.events ?? [],
+      nextLt: res.nextFrom,
+    };
+  }
