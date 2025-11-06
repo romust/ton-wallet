@@ -30,8 +30,8 @@ export const parseEvent = (event: AccountEvent, walletAddress: string) => {
           results.push({
             type: 'Jetton',
             amount: Number(fromBnWithDecimals(j.amount, jetton.decimals)),
-            from: j.sender?.toString(),
-            to: j.recipient?.toString(),
+            from: j.sender?.address.toString(),
+            to: j.recipient?.address.toString(),
             symbol: jetton.symbol || 'JETTON',
           });
           break;

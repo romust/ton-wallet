@@ -4,9 +4,10 @@ import { createContext, useContext, useState } from "react";
 interface Store {
     mnemonic: string[];
     wallet: WalletContractV5R1 | null;
+    isTestnet: boolean;
 }
 
-const initialStore: Store = { mnemonic: [], wallet: null };
+const initialStore: Store = { mnemonic: [], wallet: null, isTestnet: false };
 
 const StoreContext = createContext<{
     store: Store,

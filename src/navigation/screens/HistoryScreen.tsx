@@ -5,7 +5,7 @@ import { useStoreContext } from '@/components/contexts';
 import { AccountEvent } from '@ton-api/client';
 import { parseEvent } from '@/utils';
 
-export function HistoryScreen({ address }: { address: string }) {
+export function HistoryScreen() {
   const { store } = useStoreContext();
   const [events, setEvents] = useState<any[]>([]);
   const [nextLt, setNextLt] = useState<number | undefined>();
@@ -17,7 +17,7 @@ export function HistoryScreen({ address }: { address: string }) {
     setLoading(true);
     try {
       if (!store.wallet?.address) return;
-      const { items, nextLt: next } = await getAccountEvents(store.wallet?.address, nextLt);
+      const { items, nextLt: next } = await getAccountEvents(store.wallet?.address, store.isTestnet, nextLt);
       setEvents(prev => [...prev, ...items]);
       setNextLt(next);
       if (!next) setHasMore(false);
@@ -33,7 +33,7 @@ export function HistoryScreen({ address }: { address: string }) {
   }, []);
 
   const renderEvent = ({ item }: { item: AccountEvent }) => {
-    const actions = parseEvent(item, address);
+    const actions = parseEvent(item, store.wallet?.address.toString({ testOnly: store.isTestnet }) ?? '');
     return (
       <View style={{ marginBottom: 12, borderBottomWidth: 1, borderColor: '#eee', paddingBottom: 8 }}>
         {actions.map((a, i) => (

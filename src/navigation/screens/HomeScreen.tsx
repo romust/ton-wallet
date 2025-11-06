@@ -5,15 +5,17 @@ import { View, StyleSheet, Text, Button } from "react-native";
 
 export const HomeScreen = () => {
   const { balance } = useBalance();
-  const { store } = useStoreContext();
+  const { store, setStore } = useStoreContext();
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
   
   return (
     <View style={styles.container}>
       <Text style={styles.balance}>Balance: {balance} TON</Text>
-      <Text style={styles.address}>{store.wallet?.address.toString()}</Text>
+      <Text style={styles.address}>{store.wallet?.address.toString({ testOnly: store.isTestnet })}</Text>
+      <Button title="Send Transaction" onPress={() => navigation.navigate('Send')} />
       <Button title="Show Seed" onPress={() => navigation.navigate('Seed')} />
       <Button title="Disconnect wallet" onPress={() => navigation.reset({ index: 0, routes: [{ name: 'Welcome' }] })} />
+      <Button title={`Switch to ${store.isTestnet ? 'mainnet' : 'testnet'}`} onPress={() => setStore({ ...store, isTestnet: !store.isTestnet })} />
     </View>
   );
 }

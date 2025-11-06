@@ -14,8 +14,7 @@ export const useCreateWallet = () => {
             workchain: 0,
             publicKey: keyPair.publicKey,
         });
-        console.log('Wallet V5R1 address:', wallet.address.toString());
-        setStore({ mnemonic, wallet });
+        setStore({ mnemonic, wallet, isTestnet: false });
         if (mnemonicString) {
             navigation.reset({ index: 0, routes: [{ name: 'Wallet' }] })
         } else {

@@ -7,14 +7,25 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from '@/navigation/screens/HomeScreen';
 import { HistoryScreen } from '@/navigation/screens/HistoryScreen';
 import { ImportWalletScreen } from '@/navigation/screens/ImportWalletScreen';
+import { SendScreen } from '@/navigation/screens/SendScreen';
 
 const Stack = createNativeStackNavigator();
+
 const Tab = createBottomTabNavigator();
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Wallet">
+      <Stack.Screen name="Wallet" component={HomeScreen} />
+      <Stack.Screen name="Send" component={SendScreen} />
+    </Stack.Navigator>
+  )
+}
 
 const WalletTabs = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="History" component={HistoryScreen} />
     </Tab.Navigator>
   )
